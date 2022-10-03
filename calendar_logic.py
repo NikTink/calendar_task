@@ -402,7 +402,9 @@ class CalendarWindow(QtWidgets.QMainWindow, Ui_CalendarFormUI):
         fileName = QtWidgets.QFileDialog.getSaveFileName(self, self.tr("Save as..."), "", self.tr("Calendar Files (*.cldr)"))
         print(fileName)
         self.save_filename = fileName[0]
-        self.save()
+        if self.save_filename != "":
+            self.save()
+        return
     def populate_save_button(self) -> None:
         save_keys = QtGui.QKeySequence.Save
         save_as_keys = QtGui.QKeySequence.SaveAs
